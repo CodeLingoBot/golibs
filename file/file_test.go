@@ -4,9 +4,10 @@ import (
 	"log"
 	"os"
 	"runtime"
-	"simonwaldherr.de/go/golibs/as"
 	"strings"
 	"testing"
+
+	"simonwaldherr.de/go/golibs/as"
 )
 
 type pathTest struct {
@@ -312,6 +313,9 @@ func Test_Ψ(t *testing.T) {
 		t.Fatalf("file.Each Test failed")
 	}
 	_, err = GetAbsolutePath("//\\//\\......//////..\\\\//😃\\")
+	if err == nil {
+		t.Errorf("file.GetAbsolutePath Test failed")
+	}
 	_, err = GetAbsolutePath("")
 	if err == nil {
 		t.Errorf("file.GetAbsolutePath Test failed")
